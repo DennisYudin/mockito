@@ -1,6 +1,10 @@
 package dev.yudin.chapter_3.void_method;
 
 
+import dev.yudin.chapter_3.void_method.error.Error;
+import dev.yudin.chapter_3.void_method.error.ErrorHandler;
+import dev.yudin.chapter_3.void_method.error.MessageRepository;
+
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -13,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 public class DemoController extends HttpServlet {
 
 	private LoginController loginController;
+
+	private ErrorHandler errorHandler;
+	private MessageRepository messageRepository;
 
 	public DemoController(LoginController loginController) {
 		this.loginController = loginController;
@@ -40,7 +47,18 @@ public class DemoController extends HttpServlet {
 				req.getRequestDispatcher("error.jsp").forward(req, res);
 			}
 		} catch (Exception ex) {
-			req.setAttribute("error", ex.getMessage());
+			String errorMsg = ex.getMessage();
+
+			Error errorDto = new Error();
+			errorDto.setTrace(ex.getStackTrace());
+//			errorHandler.mapTo(errorDto);
+
+			if (errorDto.getErrorCode() != null) {
+				String errorCode = errorDto.getErrorCode();
+				errorMsg = messageRepository.lookUp(errorCode);
+			}
+
+			req.setAttribute("error", errorMsg);
 			req.getRequestDispatcher("error.jsp").forward(req, res);
 		}
 	}
