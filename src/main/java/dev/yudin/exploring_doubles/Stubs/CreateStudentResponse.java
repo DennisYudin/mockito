@@ -1,6 +1,6 @@
-package dev.yudin.Exploring_Doubles.Stubs;
+package dev.yudin.exploring_doubles.Stubs;
 
-import dev.yudin.Exploring_Doubles.dummy_object.Student;
+import dev.yudin.exploring_doubles.dummy_object.Student;
 
 public class CreateStudentResponse {
 

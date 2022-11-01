@@ -1,6 +1,6 @@
-package dev.yudin.Exploring_Doubles.Spy;
+package dev.yudin.exploring_doubles.spy;
 
-import dev.yudin.Exploring_Doubles.dummy_object.Student;
+import dev.yudin.exploring_doubles.dummy_object.Student;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,15 +17,10 @@ public class StudentService {
 	}
 	
 	public void enrollToCourse(String courseName, Student student) {
-		MethodInvocation invocation = new MethodInvocation();
-		invocation
-				.addParam(courseName)
-				.addParam(student)
-				.setMethod("enrollToCourse");
-		spy.registerCall(invocation);
+		installSpy(courseName, student);
 
 		List<Student> listOfStudents = studentCourseMap.get(courseName);
-		if (IsNull(listOfStudents)) {
+		if (isNull(listOfStudents)) {
 			listOfStudents = new ArrayList<>();
 		}
 		if (notSuchStudentInList(student, listOfStudents)) {
@@ -34,7 +29,16 @@ public class StudentService {
 		studentCourseMap.put(courseName, listOfStudents);
 	}
 
-	private boolean IsNull(List<Student> listOfStudents) {
+	private void installSpy(String courseName, Student student) {
+		MethodInvocation invocation = new MethodInvocation();
+		invocation
+				.addParam(courseName)
+				.addParam(student)
+				.setMethod("enrollToCourse");
+		spy.registerCall(invocation);
+	}
+
+	private boolean isNull(List<Student> listOfStudents) {
 		return listOfStudents == null;
 	}
 

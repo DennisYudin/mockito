@@ -2,10 +2,10 @@ package dev.yudin.Exploring_doubles.dummy_object;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import dev.yudin.Exploring_Doubles.dummy_object.DummyStudent;
-import dev.yudin.Exploring_Doubles.dummy_object.Grades;
-import dev.yudin.Exploring_Doubles.dummy_object.Marks;
-import dev.yudin.Exploring_Doubles.dummy_object.Teacher;
+import dev.yudin.exploring_doubles.dummy_object.DummyStudent;
+import dev.yudin.exploring_doubles.dummy_object.Grades;
+import dev.yudin.exploring_doubles.dummy_object.Marks;
+import dev.yudin.exploring_doubles.dummy_object.Teacher;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

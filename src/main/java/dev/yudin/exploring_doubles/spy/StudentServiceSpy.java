@@ -1,4 +1,4 @@
-package dev.yudin.Exploring_Doubles.Spy;
+package dev.yudin.exploring_doubles.spy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

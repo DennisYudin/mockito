@@ -2,9 +2,9 @@ package dev.yudin.Exploring_doubles.Spy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import dev.yudin.Exploring_Doubles.Spy.StudentService;
-import dev.yudin.Exploring_Doubles.Spy.StudentServiceSpy;
-import dev.yudin.Exploring_Doubles.dummy_object.Student;
+import dev.yudin.exploring_doubles.spy.StudentService;
+import dev.yudin.exploring_doubles.spy.StudentServiceSpy;
+import dev.yudin.exploring_doubles.dummy_object.Student;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

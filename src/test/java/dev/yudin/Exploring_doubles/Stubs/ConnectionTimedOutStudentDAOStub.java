@@ -1,6 +1,6 @@
 package dev.yudin.Exploring_doubles.Stubs;
 
-import dev.yudin.Exploring_Doubles.Stubs.StudentDAO;
+import dev.yudin.exploring_doubles.Stubs.StudentDAO;
 
 import java.sql.SQLException;
 

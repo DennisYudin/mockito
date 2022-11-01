@@ -2,9 +2,9 @@ package dev.yudin.Exploring_doubles.Stubs;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import dev.yudin.Exploring_Doubles.Stubs.CreateStudentResponse;
-import dev.yudin.Exploring_Doubles.Stubs.StudentService;
-import dev.yudin.Exploring_Doubles.Stubs.StudentServiceImpl;
+import dev.yudin.exploring_doubles.Stubs.CreateStudentResponse;
+import dev.yudin.exploring_doubles.Stubs.StudentService;
+import dev.yudin.exploring_doubles.Stubs.StudentServiceImpl;
 import org.junit.jupiter.api.Test;
 
 class StudentServiceTest {

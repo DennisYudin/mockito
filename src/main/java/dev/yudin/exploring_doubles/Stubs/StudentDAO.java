@@ -1,4 +1,4 @@
-package dev.yudin.Exploring_Doubles.Stubs;
+package dev.yudin.exploring_doubles.Stubs;
 
 import java.sql.SQLException;
 

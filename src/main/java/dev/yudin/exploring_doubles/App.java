@@ -1,4 +1,4 @@
-package dev.yudin.Exploring_Doubles;
+package dev.yudin.exploring_doubles;
 
 /**
  * Hello world!

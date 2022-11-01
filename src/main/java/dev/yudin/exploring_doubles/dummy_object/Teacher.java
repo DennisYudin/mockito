@@ -1,4 +1,4 @@
-package dev.yudin.Exploring_Doubles.dummy_object;
+package dev.yudin.exploring_doubles.dummy_object;
 
 import java.math.BigDecimal;
 import java.util.List;
