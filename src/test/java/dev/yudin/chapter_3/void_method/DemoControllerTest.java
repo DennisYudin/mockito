@@ -1,5 +1,6 @@
 package dev.yudin.chapter_3.void_method;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Matchers.isA;
@@ -10,8 +11,10 @@ import static org.mockito.Mockito.when;
 
 import dev.yudin.chapter_3.void_method.error.Error;
 import dev.yudin.chapter_3.void_method.error.ErrorHandler;
+import dev.yudin.chapter_3.void_method.error.MessageRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.stubbing.Answer;
@@ -35,6 +38,9 @@ class DemoControllerTest {
 	@Mock
 	ErrorHandler errorHandler;
 
+	@Mock
+	MessageRepository messageRepository;
+
 	@BeforeEach
 	public void beforeEveryTest() {
 		MockitoAnnotations.initMocks(this);
@@ -49,10 +55,10 @@ class DemoControllerTest {
 		doThrow(new IllegalStateException("LDAP error")).when(loginController).process(request, response);
 
 		doAnswer((Answer<Object>) invocation -> {
-			Error err = (Error) invocation.getArguments()[0];
-			err.setErrorCode("123");
-			return err;
-		}
+					Error err = (Error) invocation.getArguments()[0];
+					err.setErrorCode("123");
+					return err;
+				}
 		).when(errorHandler).mapTo(isA(Error.class));
 
 		when(request.getRequestDispatcher(anyString())).thenReturn(dispatcher);
@@ -61,5 +67,9 @@ class DemoControllerTest {
 
 		verify(request).getRequestDispatcher(eq("error.jsp"));
 		verify(dispatcher).forward(request, response);
+
+//		ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+//		verify(messageRepository).lookUp(captor.capture());
+//		assertEquals("123", captor.getValue());
 	}
 }
