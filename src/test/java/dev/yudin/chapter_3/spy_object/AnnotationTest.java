@@ -1,20 +1,23 @@
-package dev.yudin.chapter_3.generic_collection_arguments;
+package dev.yudin.chapter_3.spy_object;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 
-import dev.yudin.chapter_3.void_method.DemoController;
+import dev.yudin.chapter_3.generic_collection_arguments.Service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.List;
 
-class ServiceImplTest {
+class AnnotationTest {
 
+	@Captor
+	ArgumentCaptor<List<String>> captor;
 	@Mock
 	Service service;
 
@@ -24,15 +27,10 @@ class ServiceImplTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
-	void when_captures_collections() throws Exception {
-
-		Class<List<String>> listClass = (Class<List<String>>) (Class) List.class;
-		ArgumentCaptor<List<String>> captor = ArgumentCaptor.forClass(listClass);
-
-		service.call(Arrays.asList("a", "b"));
-
+	void when_captor_annotation_is_used() {
+		service.call(Arrays.asList("a","b"));
 		verify(service).call(captor.capture());
+
 		assertTrue(captor.getValue().containsAll(Arrays.asList("a","b")));
 	}
 }
