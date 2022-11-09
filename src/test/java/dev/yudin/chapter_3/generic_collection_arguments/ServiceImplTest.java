@@ -1,31 +1,31 @@
 package dev.yudin.chapter_3.generic_collection_arguments;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.verify;
 
-import dev.yudin.chapter_3.void_method.DemoController;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.List;
 
+@RunWith(MockitoJUnitRunner.class)
 class ServiceImplTest {
 
 	@Mock
-	Service service;
+	private Service service;
 
-	@BeforeEach
-	public void beforeEveryTest() {
-		MockitoAnnotations.initMocks(this);
-	}
+//	@BeforeEach
+//	public void beforeEveryTest() {
+//		MockitoAnnotations.initMocks(this);
+//	}
 
 	@Test
 	@SuppressWarnings("unchecked")
-	void when_captures_collections() throws Exception {
+	public void when_captures_collections() throws Exception {
 
 		Class<List<String>> listClass = (Class<List<String>>) (Class) List.class;
 		ArgumentCaptor<List<String>> captor = ArgumentCaptor.forClass(listClass);
